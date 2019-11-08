@@ -84,7 +84,7 @@ program
       global.console.log(
         green(
           `You have selected ${white().bold(answers.list_example.title)} list item and have entered ${white().bold(
-            answers.input_example.title,
+            answers.input_example,
           )} to the input!`,
         ),
       );
