@@ -19,6 +19,7 @@
 
 ## Development
 - Clone this repo
+- Run `yarn install`
 - Create a `symlink` between project directory and executable command by running `yarn link` to able to test on local
 - Run `yarn build:watch` to update the cli for every code changes
 - Run `ac-cli-boilerplate test`
