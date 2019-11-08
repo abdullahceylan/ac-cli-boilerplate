@@ -1,0 +1,46 @@
+module.exports = {
+  git: {
+    changelog: 'git log --pretty=format:"* %s (%h)" ${latestTag}...HEAD',
+    commitMessage: 'Release v${version}',
+    requireCleanWorkingDir: true,
+    requireUpstream: true,
+    commit: true,
+    commitMessage: 'Release v${version}',
+    commitArgs: '',
+    tag: true,
+    tagAnnotation: 'Release v${version}',
+    tagName: 'v${version}',
+    push: true,
+    pushArgs: '--follow-tags',
+    pushRepo: 'origin',
+  },
+  github: {
+    assets: ['build/lib/*.js'],
+    draft: true,
+    release: true,
+    releaseName: 'v${version}',
+    releaseNotes: null,
+    preRelease: false,
+    host: null,
+    timeout: 0,
+    proxy: null,
+  },
+  gitlab: {
+    release: false,
+    releaseName: 'v${version}',
+    releaseNotes: null,
+    assets: ['build/lib/*.js'],
+    origin: null,
+  },
+  npm: {
+    publish: false,
+    publishPath: '.',
+    access: null,
+    otp: null,
+  },
+  hooks: {
+    'after:git:release': 'git tag -f latest && git push -f origin latest',
+    'after:release':
+      'echo Successfully created a release draft v${version} for ${repo.repository}. Please add release notes when necessary and publish it!',
+  },
+};

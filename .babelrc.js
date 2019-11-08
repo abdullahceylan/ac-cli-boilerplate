@@ -1,0 +1,12 @@
+module.exports = {
+  env: {
+    development: {
+      presets: ['env'],
+      plugins: ['add-module-exports'],
+    },
+    production: {
+      presets: ['env', 'minify'],
+      plugins: ['add-module-exports'],
+    },
+  },
+};
