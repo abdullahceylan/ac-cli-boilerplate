@@ -7,8 +7,13 @@
     "production": {
       "presets": ["env", ["minify", {
         "removeDebugger": true,
-        "removeConsole": true,
+        "removeConsole": true
       }]],
+      "ignore": [
+        "**/test*.js",
+        "**/*.test.js",
+        "**/env*.js"
+      ],
       "comments": false,
       "plugins": ["transform-object-rest-spread", "add-module-exports"]
     }
