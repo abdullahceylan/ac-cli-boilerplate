@@ -1,6 +1,6 @@
 {
   "name": "ac-cli-boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI boilerplate to easily create a CLI app",
   "main": "./build/lib/index.js",
   "scripts": {
