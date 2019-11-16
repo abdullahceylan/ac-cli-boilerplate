@@ -29,4 +29,7 @@ CHANGELOG.md
 .npmrc
 .yarnrc
 _old*
-.env
+.env*
+patches
+backup
+test*

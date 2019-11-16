@@ -52,7 +52,6 @@
   "dependencies": {
     "@abdullahceylan/eslint-config": "^1.1.0",
     "@abdullahceylan/prettier-config": "^1.1.0",
-    "D": "^1.0.0",
     "boxen": "^4.1.0",
     "commander": "^4.0.0",
     "copyfiles": "^2.1.1",
