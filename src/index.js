@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 /* eslint-disable default-case */
-const path = require('path');
 const updater = require('update-notifier');
 const semver = require('semver');
 const program = require('commander');
@@ -11,11 +10,10 @@ const { slugify } = require('./helpers');
 
 require('pkginfo')(module);
 
-const appName = 'AC CLI App Boilerplate';
-const pkgVersion = module.exports.version;
-const pkgName = module.exports.name;
+const APP_NAME = 'AC CLI App Boilerplate';
+const APP_VERSION = module.exports.version;
+const PACKAGE_NAME = module.exports.name;
 
-const appRoot = path.resolve(__dirname, '..');
 // Required min version of node.js
 const MIN_NODE_VERSION = '6.9.0';
 
@@ -28,13 +26,13 @@ const boxOptions = {
 };
 
 // Check if update is available
-updater({ pkg: { name: pkgName, version: pkgVersion } }).notify();
+updater({ pkg: { name: PACKAGE_NAME, version: APP_VERSION } }).notify();
 
 // if user try to execute the app using `sudo` then display a warning
 if (process.getuid && process.getuid() === 0) {
   global.console.warn(
     yellow(
-      `*** WARNING: *** ${appName} doesn't need superuser privileges. Don't run it under root!`,
+      `*** WARNING: *** ${APP_NAME} doesn't need superuser privileges. Don't run it under root!`,
     ),
   );
 }
@@ -44,7 +42,7 @@ if (process.getuid && process.getuid() === 0) {
 if (semver.satisfies(process.version, `>=${MIN_NODE_VERSION}`) === false) {
   global.console.error(
     red(
-      `${appName} requires at least Node.js ${MIN_NODE_VERSION} or higher (you have ${process.version}), please upgrade your Node to the latest stable version.`,
+      `${APP_NAME} requires at least Node.js ${MIN_NODE_VERSION} or higher (you have ${process.version}), please upgrade your Node to the latest stable version.`,
     ),
   );
   process.exit(1);
@@ -68,7 +66,7 @@ const questions = [
 ];
 
 // CLI app version
-program.version(pkgVersion).description(appName);
+program.version(APP_VERSION).description(APP_NAME);
 
 // CLI app commands
 program
@@ -76,16 +74,16 @@ program
   .alias('t')
   .description('Test command')
   .action(() => {
-    global.console.log(boxen(white(`${appName} - v${pkgVersion}`), boxOptions));
+    global.console.log(boxen(white(`${APP_NAME} - v${APP_VERSION}`), boxOptions));
 
     prompt(questions).then(answers => {
       //console.log('answers: ', answers);
 
       global.console.log(
         green(
-          `You have selected ${white().bold(answers.list_example.title)} list item and have entered ${white().bold(
-            answers.input_example.title,
-          )} to the input!`,
+          `You have selected ${white().bold(
+            answers.list_example.title,
+          )} list item and have entered ${white().bold(answers.input_example.title)} to the input!`,
         ),
       );
     });
